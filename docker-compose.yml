@@ -1,0 +1,5 @@
+services:
+  gpt-cli:
+    build: .
+    env_file:
+      - .env

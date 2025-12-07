@@ -10,7 +10,7 @@ A simple command-line interface that calls the GPT-4 API. This project demonstra
 
 ## Prerequisites
 
-- Python 3.8 or higher
+- Python 3.8 or higher (or Docker)
 - An OpenAI API key
 
 ## Installation
@@ -71,14 +71,42 @@ Example output:
 Hello! How can I assist you today?
 ```
 
+## Usage with Docker
+
+If you prefer not to install Python locally, you can use Docker instead.
+
+1. Build the Docker image:
+
+```bash
+docker build -t ai-hello-gpt .
+```
+
+2. Run with your API key:
+
+```bash
+# Option 1: Pass the key directly
+docker run --rm -e OPENAI_API_KEY="your-api-key-here" ai-hello-gpt "Hello, GPT!"
+
+# Option 2: Use your .env file
+docker run --rm --env-file .env ai-hello-gpt "Hello, GPT!"
+```
+
+Alternatively, use docker-compose:
+
+```bash
+docker compose run --rm gpt-cli "Hello, GPT!"
+```
+
 ## Project Structure
 
 ```
 ai-hello-gpt/
-├── main.py           # Entry point and CLI logic
-├── requirements.txt  # Python dependencies
-├── .env.example      # Example environment file
-└── README.md         # This file
+├── main.py              # Entry point and CLI logic
+├── requirements.txt     # Python dependencies
+├── .env.example         # Example environment file
+├── Dockerfile           # Docker image configuration
+├── docker-compose.yml   # Docker Compose configuration
+└── README.md            # This file
 ```
 
 ## Dependencies
